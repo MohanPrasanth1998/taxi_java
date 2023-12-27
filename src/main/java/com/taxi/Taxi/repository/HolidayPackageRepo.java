@@ -11,8 +11,8 @@ import com.taxi.Taxi.model.HolidayPackage;
 public interface HolidayPackageRepo extends JpaRepository<HolidayPackage, Long> {
 
     List<HolidayPackage> findAll();
-	List <HolidayPackage> findBypackageId(Long packageId);
-	void  deleteBypackageId(Long packageId);
+	List<HolidayPackage> findBypackageId(long packageId);
+	void deleteBypackageId(long packageId);
 	
 
 }

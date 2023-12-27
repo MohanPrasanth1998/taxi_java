@@ -8,10 +8,11 @@ import com.taxi.Taxi.model.HolidayPackage;
 public interface HolidayPackageService {
 	
 	List<HolidayPackage> getAllPackages();
-	List<HolidayPackageDto> getPackageById(Long packageId);//findBypackageId
+	//List<HolidayPackageDto> getPackageById(Long packageId);//findBypackageId
 	boolean deletePackage(Long packageId);
 	HolidayPackage save(HolidayPackageDto holidayPackagedto);
 	HolidayPackage update(HolidayPackageDto holidayPackageDto) throws Exception;
+	List<HolidayPackageDto> getPackageById(long packageId);
 	
 
 }

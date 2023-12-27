@@ -39,7 +39,7 @@ public class TripBookingController {
 	
 	
 	
-	@GetMapping("/get/cab")
+	@GetMapping("/get/{cabId}")
 	public List<TripBookingDto> getAllTripsByCab(@PathVariable("cabId") Integer cabId){
     	log.debug("List Of TripDetails ");
     	try {
@@ -52,7 +52,7 @@ public class TripBookingController {
 	
 	
 	
-	@GetMapping("/get/cab/user")
+	@GetMapping("/get/{cabId}/{userId}")
 	public List<TripBookingDto> getAllTripsByCabAndUser(@PathVariable("cabId") Integer cabId,@PathVariable("userId") Integer userId){
     	log.debug("List Of Cab And User Details ");
     	try {

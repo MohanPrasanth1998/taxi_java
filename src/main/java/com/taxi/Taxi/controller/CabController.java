@@ -39,7 +39,7 @@ public class CabController {
 
 	}
 
-	@PutMapping("/update/{cabId}")
+	@PutMapping("/update")
 	public Response update(@Valid @RequestBody CabDto cabDto) throws Exception {
 		log.info("Update Cab Details");
 

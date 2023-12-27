@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class HolidayPackageDto {
 	
-    private Long id;
+    private long packageid;
     private String packageName;
     private String destination;
     private String price;

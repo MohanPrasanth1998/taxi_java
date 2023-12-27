@@ -202,13 +202,13 @@ public class HolidayPackageDao implements HolidayPackageRepo {
 	}
 
 	@Override
-	public List<HolidayPackage> findBypackageId(Long packageId) {
+	public List<HolidayPackage> findBypackageId(long packageId) {
 		// TODO Auto-generated method stub
 		return holidayPackageRepo.findBypackageId(packageId);
 	}
 
 	@Override
-	public void deleteBypackageId(Long packageId) {
+	public void deleteBypackageId(long packageId) {
 		holidayPackageRepo.deleteBypackageId(packageId);
 	}
 

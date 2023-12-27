@@ -47,7 +47,7 @@ public class HolidayPackageServiceImpl implements HolidayPackageService {
 			//List<HolidayPackage> holidayPackage = holidaypackagedao.findBypackageId(holidayPackageDto.getId());
 			HolidayPackage holidayPackage = new HolidayPackage();
 			if (holidayPackage != null) {
-				holidayPackage.setPackageId(holidayPackageDto.getId());
+				holidayPackage.setPackageId(holidayPackageDto.getPackageid());
 				holidayPackage.setPackageName(holidayPackageDto.getPackageName());
 				holidayPackage.setDestination(holidayPackageDto.getDestination());
 				holidayPackage.setPrice(holidayPackageDto.getPrice());
@@ -71,11 +71,11 @@ public class HolidayPackageServiceImpl implements HolidayPackageService {
 	}
 
 	@Override
-	public List<HolidayPackageDto> getPackageById(Long packageId) {
+	public List<HolidayPackageDto> getPackageById(long packageId) {
 		log.debug("Get Package By PackageID");
 		try {
 
-			return holidaypackagedao.findById(packageId).stream()
+			return holidaypackagedao.findBypackageId(packageId).stream()
 					.map(holiday -> modelMapper.map(holiday, HolidayPackageDto.class)).collect(Collectors.toList());
 		} catch (Exception e) {
 			log.error(e.getMessage());

@@ -12,7 +12,7 @@ public class HolidayPackage {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long packageId;
+    private long packageId;
     private String packageName;
     private String destination;
     private String price;

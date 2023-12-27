@@ -36,7 +36,7 @@ public class AdminController {
 
 	}
 
-	@PutMapping("/update/{adminId}")
+	@PutMapping("/update")
 	public Response update(@Valid @RequestBody AdminDto adminDto) throws Exception {
 
 		Admin admin = adminService.updateAdmin(adminDto);
