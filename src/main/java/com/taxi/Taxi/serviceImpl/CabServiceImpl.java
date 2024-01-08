@@ -29,7 +29,7 @@ public class CabServiceImpl implements CabService {
 			return cabDao.save(cabDetails);
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			;
+			
 			throw new RuntimeException("Failed To save");
 		}
 	}
@@ -41,7 +41,8 @@ public class CabServiceImpl implements CabService {
 			//Cab cab = cabDao.findBycabId(cabDto.getCabId());
 			Cab cab = new Cab();
 			if (cab != null) {
-				cab.setVehicleCurStatus(cabDto.getVehicleCurStatus());
+				
+				//cab.setVehicleCurStatus(cabDto.getVehicleCurStatus());
 				cab.setVehicleCurLocation(cabDto.getVehicleCurLocation());
 				cab.setVehicleType(cabDto.getVehicleType());
 				cab.setPerKmRate(cabDto.getPerKmRate());

@@ -47,7 +47,7 @@ public class HolidayPackageServiceImpl implements HolidayPackageService {
 			//List<HolidayPackage> holidayPackage = holidaypackagedao.findBypackageId(holidayPackageDto.getId());
 			HolidayPackage holidayPackage = new HolidayPackage();
 			if (holidayPackage != null) {
-				holidayPackage.setPackageId(holidayPackageDto.getPackageid());
+				holidayPackage.setPackageId(holidayPackageDto.getPackageId());
 				holidayPackage.setPackageName(holidayPackageDto.getPackageName());
 				holidayPackage.setDestination(holidayPackageDto.getDestination());
 				holidayPackage.setPrice(holidayPackageDto.getPrice());

@@ -23,11 +23,11 @@ public class Driver {
 	private Integer driverId;
 	private String driverName;
 	private String licenceNo;
-	private String rating;
-	private String curDriverStatus;
+	private Integer rating;
+	private boolean curDriverStatus;
 	private Integer totalRides;
-	private String totalEarning;
-	private String averageRatings;
+	private long totalEarning;
+	private Integer averageRatings;
 	private Integer acceptRideCount;
 	private Integer rejectRideCount;
 	private String knownLanguage;

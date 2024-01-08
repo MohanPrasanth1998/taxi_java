@@ -3,9 +3,11 @@ package com.taxi.Taxi.serviceImpl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.taxi.Taxi.dao.TripBookingDao;
 import com.taxi.Taxi.dto.TripBookingDto;
 import com.taxi.Taxi.model.Cab;
@@ -14,6 +16,7 @@ import com.taxi.Taxi.model.User;
 import com.taxi.Taxi.service.CabService;
 import com.taxi.Taxi.service.TripBookingService;
 import com.taxi.Taxi.service.UserService;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -34,6 +37,8 @@ public class TripBookingServiceImpl implements TripBookingService {
 		log.debug("Save Driver Details");
 		try {
 			TripBooking tripDetails = modelMapper.map(tripBookingDto, TripBooking.class);
+			tripDetails.setTotalTravellersCount(
+					tripBookingDto.getTravellersAdult() + tripBookingDto.getTravellersChildrens());
 			return tripBookingDao.save(tripDetails);
 		} catch (Exception e) {
 			log.error(e.getMessage());
@@ -42,11 +47,13 @@ public class TripBookingServiceImpl implements TripBookingService {
 	}
 
 	@Override
-	public TripBooking updateStatus(String bookingStatus, Integer tripBookingId) throws Exception {
+	public TripBooking updateStatus(boolean bookingStatus, Integer tripBookingId) throws Exception {
 		try {
 			TripBooking tripBooking = tripBookingDao.findBytripBookingId(tripBookingId);
 			if (tripBooking != null) {
 				tripBooking.setBookingStatus(bookingStatus);
+				// tripBooking.isBookingStatus();
+				// tripBooking.setBookingStatus(bookingStatus);
 				return tripBookingDao.save(tripBooking);
 			}
 			throw new Exception("Booking id not found");
@@ -98,6 +105,21 @@ public class TripBookingServiceImpl implements TripBookingService {
 			return new ArrayList<>();
 		}
 
+	}
+
+	@Override
+	public List<TripBooking> getAllTripsBypickupLocationAnddropLocationAndfromDateTime(String pickupLocation,
+			String dropLocation, String fromDateTime) {
+		try {
+			log.info("list Of Details");
+			return tripBookingDao.findBypickupLocationAndDropLocationAndFromDateTime(pickupLocation, dropLocation,
+					fromDateTime);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			return new ArrayList<>();
+		}
+
+		
 	}
 
 }

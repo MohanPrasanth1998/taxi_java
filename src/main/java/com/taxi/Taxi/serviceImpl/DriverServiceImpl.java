@@ -52,7 +52,7 @@ public class DriverServiceImpl implements DriverService {
 		try {
 			Driver driver =new Driver();
 			if (driver != null) {
-				driver.setCurDriverStatus(driverDto.getCurDriverStatus());
+				driver.setCurDriverStatus(driverDto.isCurDriverStatus());
 				driver.setDriverId(driverDto.getDriverId());
 				driver.setDriverName(driverDto.getDriverName());
 				driver.setKnownLanguage(driverDto.getKnownLanguage());

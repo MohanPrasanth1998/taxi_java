@@ -6,16 +6,21 @@ import com.taxi.Taxi.dto.TripBookingDto;
 import com.taxi.Taxi.model.TripBooking;
 
 public interface TripBookingService {
-	
+
 	TripBooking saveOrUpdate(TripBookingDto TripBookingDto);
 
 	List<TripBookingDto> getAllTribsByCab(Integer cabId);
 
 	List<TripBookingDto> getAllTribsByCabAndUser(Integer cabId, Integer userId);
 
-	TripBooking updateStatus(String bookingStatus, Integer tripBookingId) throws Exception;
+	// TripBooking updateStatus(String bookingStatus, Integer tripBookingId) throws
+	// Exception;
 
 	List<TripBookingDto> getAllTripsByUser(Integer userId) throws Exception;
-	
+
+	TripBooking updateStatus(boolean bookingStatus, Integer tripBookingId) throws Exception;
+
+	List<TripBooking> getAllTripsBypickupLocationAnddropLocationAndfromDateTime(String pickupLocation,
+			String dropLocation, String fromDateTime);
 
 }

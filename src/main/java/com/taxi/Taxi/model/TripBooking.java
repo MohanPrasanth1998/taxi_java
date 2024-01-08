@@ -1,5 +1,7 @@
 package com.taxi.Taxi.model;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
@@ -28,18 +30,21 @@ public class TripBooking {
 	@NotNull
 	private String fromDateTime;
 	@NotNull
-	private String dropLocation;
+	private String dropLocation;       
 	@NotNull
-	private String toDateTime;
+	private Date toDateTime;
 	@NotNull
-	private float distanceInKm;
-	@JsonIgnore
-	private String currStatus;
-	private String estimateFare; 
+	private float distanceInKm;//backend
+	private String estimateFare; //backend
 	private String cancelReason;
-	private String bookingStatus;
-	private String schedulePickupTime;
-	
+	private boolean bookingStatus = true;
+	private String schedulePickupTime;//backend
+	private String scheduleDepatureTime;
+	private String conformationCode;//backend
+	private long travellersAdult;
+	private long travellersChildrens;
+	private long totalTravellersCount;//backend
+
 	
 		
 	@ManyToOne(cascade = CascadeType.REMOVE,targetEntity = User.class)

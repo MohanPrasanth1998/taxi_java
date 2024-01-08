@@ -15,6 +15,6 @@ public class HolidayPackage {
     private long packageId;
     private String packageName;
     private String destination;
-    private String price;
+    private double price;
 
 }

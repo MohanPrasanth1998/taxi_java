@@ -51,6 +51,21 @@ public class TripBookingController {
 	}
 	
 	
+	@GetMapping("/get/{pickupLocation}/{dropLocation}/{fromDateTime}")
+	public List<TripBooking> getAllTripsBypickupLocationAnddropLocationAndfromDateTime(@PathVariable String  pickupLocation,
+			@PathVariable String dropLocation, @PathVariable String fromDateTime ){
+		log.debug("List of Trips");
+		try {
+			return tripBookingService.getAllTripsBypickupLocationAnddropLocationAndfromDateTime(pickupLocation, dropLocation, fromDateTime);
+			
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			throw new RuntimeException(" List Failed To Get");
+			
+		}	
+	}
+	
+	
 	
 	@GetMapping("/get/{cabId}/{userId}")
 	public List<TripBookingDto> getAllTripsByCabAndUser(@PathVariable("cabId") Integer cabId,@PathVariable("userId") Integer userId){

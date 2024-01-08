@@ -21,7 +21,7 @@ public class Cab {
 	private String vehicleNumber;
 	private float  perKmRate;
 	private String vehicleCurLocation;
-	private String vehicleCurStatus;
+	private boolean vehicleCurStatus;
 	
 
 }

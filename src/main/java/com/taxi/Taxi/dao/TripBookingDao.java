@@ -26,7 +26,7 @@ public class TripBookingDao implements TripBookingRepo {
 	@Override
 	public void flush() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -44,19 +44,19 @@ public class TripBookingDao implements TripBookingRepo {
 	@Override
 	public void deleteAllInBatch(Iterable<TripBooking> entities) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteAllByIdInBatch(Iterable<Integer> ids) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteAllInBatch() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -133,31 +133,31 @@ public class TripBookingDao implements TripBookingRepo {
 	@Override
 	public void deleteById(Integer id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void delete(TripBooking entity) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteAllById(Iterable<? extends Integer> ids) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteAll(Iterable<? extends TripBooking> entities) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteAll() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -204,7 +204,7 @@ public class TripBookingDao implements TripBookingRepo {
 
 	@Override
 	public List<TripBooking> findBycab(Cab cab) {
-	
+
 		return tripBookingRepo.findBycab(cab);
 	}
 
@@ -222,5 +222,12 @@ public class TripBookingDao implements TripBookingRepo {
 		return tripBookingRepo.findByuser(user);
 	}
 
-	
+	@Override
+	public List<TripBooking> findBypickupLocationAndDropLocationAndFromDateTime(String pickupLocation,
+			String dropLocation, String fromDateTime) {
+		// TODO Auto-generated method stub
+		return tripBookingRepo.findBypickupLocationAndDropLocationAndFromDateTime(pickupLocation, dropLocation,
+				fromDateTime);
+	}
+
 }

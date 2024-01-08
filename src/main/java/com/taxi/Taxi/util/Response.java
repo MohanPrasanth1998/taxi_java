@@ -36,6 +36,14 @@ public class Response {
 		this.message = message;
 		this.status = status;
 	}
+	
+	/*public Response(Date timestamp, String message, HttpStatus status, Object data) {
+		super();
+		this.timestamp = timestamp;
+		this.message = message;
+		this.status = status;
+		this.data = data;
+	}*/
 
 	
 

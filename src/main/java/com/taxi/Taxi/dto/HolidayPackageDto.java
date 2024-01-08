@@ -4,11 +4,10 @@ import lombok.Data;
 
 @Data
 public class HolidayPackageDto {
-	
-    private long packageid;
-    private String packageName;
-    private String destination;
-    private String price;
 
+	private long packageId;
+	private String packageName;
+	private String destination;
+	private double price;
 
 }

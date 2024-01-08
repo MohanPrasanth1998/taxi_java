@@ -10,7 +10,7 @@ public class CabDto {
 	private String vehicleNumber;
 	private float  perKmRate;
 	private String vehicleCurLocation;
-	private String vehicleCurStatus;
+	private boolean vehicleCurStatus;
 	
 
 }

@@ -10,15 +10,17 @@ import com.taxi.Taxi.model.TripBooking;
 import com.taxi.Taxi.model.User;
 
 @Repository
-public interface TripBookingRepo extends JpaRepository<TripBooking, Integer>{
-	
+public interface TripBookingRepo extends JpaRepository<TripBooking, Integer> {
+
 	List<TripBooking> findBycab(Cab cab);
-	
-	List <TripBooking> findByuser(User user);
-	
+
+	List<TripBooking> findByuser(User user);
+
 	List<TripBooking> findBycabAndUser(Cab cab, User user);
 
 	TripBooking findBytripBookingId(Integer tripBookingId);
 
+	List<TripBooking> findBypickupLocationAndDropLocationAndFromDateTime(String pickupLocation, String dropLocation,
+			String fromDateTime);
 
 }
