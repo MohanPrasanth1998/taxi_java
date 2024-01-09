@@ -16,6 +16,7 @@ import com.taxi.Taxi.model.User;
 import com.taxi.Taxi.service.CabService;
 import com.taxi.Taxi.service.TripBookingService;
 import com.taxi.Taxi.service.UserService;
+import com.taxi.Taxi.util.ExceptionMessageUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -42,7 +43,7 @@ public class TripBookingServiceImpl implements TripBookingService {
 			return tripBookingDao.save(tripDetails);
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			throw new RuntimeException("Failed To save");
+			throw new RuntimeException(ExceptionMessageUtil.BOOKING_FAILED_TO_SAVE);
 		}
 	}
 
@@ -56,10 +57,10 @@ public class TripBookingServiceImpl implements TripBookingService {
 				// tripBooking.setBookingStatus(bookingStatus);
 				return tripBookingDao.save(tripBooking);
 			}
-			throw new Exception("Booking id not found");
+			throw new Exception(ExceptionMessageUtil.BOOKING_ID_NOT_FOUND_WHILE_UPDATE);
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			throw new Exception("Update failed");
+			throw new Exception(ExceptionMessageUtil.BOOKING_UPDATE_FAILED);
 		}
 	}
 

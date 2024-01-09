@@ -12,6 +12,7 @@ import com.taxi.Taxi.dao.HolidayPackageDao;
 import com.taxi.Taxi.dto.HolidayPackageDto;
 import com.taxi.Taxi.model.HolidayPackage;
 import com.taxi.Taxi.service.HolidayPackageService;
+import com.taxi.Taxi.util.ExceptionMessageUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,7 +34,7 @@ public class HolidayPackageServiceImpl implements HolidayPackageService {
 			return holidaypackagedao.save(packageDetails);
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			throw new RuntimeException("Failed To save");
+			throw new RuntimeException(ExceptionMessageUtil.HOLIDAY_PACKAGE_FAILED_TO_SAVE);
 		}
 
 	}
@@ -54,11 +55,11 @@ public class HolidayPackageServiceImpl implements HolidayPackageService {
 				return holidaypackagedao.save(holidayPackage);
 			}
 
-			throw new Exception("Holiday Package Failed To Get");
+			throw new Exception(ExceptionMessageUtil.HOLIDAY_PACKAGE_FAILED_TO_GET_ON_UPDATE);
 
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			throw new Exception("Update failed");
+			throw new Exception(ExceptionMessageUtil.HOLIDAY_PACKAGE_UPDATE_FAILED);
 
 		}
 

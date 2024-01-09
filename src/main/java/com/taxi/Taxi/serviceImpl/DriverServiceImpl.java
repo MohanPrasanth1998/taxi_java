@@ -8,6 +8,7 @@ import com.taxi.Taxi.dao.DriverDao;
 import com.taxi.Taxi.dto.DriverDto;
 import com.taxi.Taxi.model.Driver;
 import com.taxi.Taxi.service.DriverService;
+import com.taxi.Taxi.util.ExceptionMessageUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,7 +31,7 @@ public class DriverServiceImpl implements DriverService {
 		} catch (Exception e) {
 			log.error(e.getMessage());
 
-			throw new RuntimeException("Failed To save");
+			throw new RuntimeException(ExceptionMessageUtil.DRIVER_DETAILS_FAILED_TO_SAVE);
 		}
 	}
 
@@ -41,7 +42,7 @@ public class DriverServiceImpl implements DriverService {
 			return driverDao.findByDriverId(driverId);
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			throw new Exception("Driver not found");
+			throw new Exception(ExceptionMessageUtil.DRIVER_NOT_FOUND_BY_ID);
 		}
 
 	}
@@ -58,11 +59,11 @@ public class DriverServiceImpl implements DriverService {
 				driver.setKnownLanguage(driverDto.getKnownLanguage());
 				return driverDao.save(driver);
 			}
-			throw new Exception("Admin Id Failed To Get");
+			throw new Exception(ExceptionMessageUtil.DRIVER_ID_FAILED_TO_GET);
 
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			throw new Exception("Update failed");
+			throw new Exception(ExceptionMessageUtil.DRIVER_UPDATE_FAILED);
 		}
 
 	}

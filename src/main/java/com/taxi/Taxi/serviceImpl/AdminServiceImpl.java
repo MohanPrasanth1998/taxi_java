@@ -8,6 +8,7 @@ import com.taxi.Taxi.dao.AdminDao;
 import com.taxi.Taxi.dto.AdminDto;
 import com.taxi.Taxi.model.Admin;
 import com.taxi.Taxi.service.AdminService;
+import com.taxi.Taxi.util.ExceptionMessageUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,7 +31,7 @@ public class AdminServiceImpl implements AdminService {
 		} catch (Exception e) {
 			log.error(e.getMessage());
 			;
-			throw new RuntimeException("Failed To save");
+			throw new RuntimeException(ExceptionMessageUtil.ADMIN_DETAILS_FAILED_TO_SAVE);
 		}
 	}
 
@@ -45,11 +46,11 @@ public class AdminServiceImpl implements AdminService {
 				admin.setPassword(adminDto.getPassword());
 				return adminDao.save(admin);
 			}
-			throw new Exception("Admin Id Failed To Get");
+			throw new Exception(ExceptionMessageUtil.ADMIN_ID_FAILED_TO_GET);
 
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			throw new Exception("Update failed");
+			throw new Exception(ExceptionMessageUtil.ADMIN_UPDATE_FAILED);
 		}
 
 	}
@@ -61,7 +62,7 @@ public class AdminServiceImpl implements AdminService {
 			return adminDao.findByadminId(adminId);
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			throw new Exception("Admin not found");
+			throw new Exception(ExceptionMessageUtil.ADMIN_NOT_FOUND_BY_ID);
 		}
 	}
 	

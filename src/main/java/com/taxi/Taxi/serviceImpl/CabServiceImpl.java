@@ -8,6 +8,7 @@ import com.taxi.Taxi.dao.CabDao;
 import com.taxi.Taxi.dto.CabDto;
 import com.taxi.Taxi.model.Cab;
 import com.taxi.Taxi.service.CabService;
+import com.taxi.Taxi.util.ExceptionMessageUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,7 +31,7 @@ public class CabServiceImpl implements CabService {
 		} catch (Exception e) {
 			log.error(e.getMessage());
 			
-			throw new RuntimeException("Failed To save");
+			throw new RuntimeException(ExceptionMessageUtil.CAB_DETAILS_FAILED_TO_SAVE);
 		}
 	}
 
@@ -50,11 +51,11 @@ public class CabServiceImpl implements CabService {
 				cab.setVehicleName(cabDto.getVehicleName());
 				return cabDao.save(cab);
 			}
-			throw new Exception("Cab Id Failed To Get");
+			throw new Exception(ExceptionMessageUtil.CABID_FAILED_TO_GET);
 
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			throw new Exception("Update failed");
+			throw new Exception(ExceptionMessageUtil.CAB_UPDATE_FAILED);
 		}
 
 	}
@@ -65,7 +66,7 @@ public class CabServiceImpl implements CabService {
 			return cabDao.findBycabId(cabId);
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			throw new Exception("Cab not found");
+			throw new Exception(ExceptionMessageUtil.CAB_NOT_FOUND_BY_ID);
 		}
 	}
 

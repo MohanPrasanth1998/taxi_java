@@ -9,6 +9,7 @@ import com.taxi.Taxi.dto.UserDto;
 import com.taxi.Taxi.dto.UserLogInDto;
 import com.taxi.Taxi.model.User;
 import com.taxi.Taxi.service.UserService;
+import com.taxi.Taxi.util.ExceptionMessageUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,7 +31,7 @@ public class UserServiceImpl implements UserService {
 		} catch (Exception e) {
 			log.error(e.getMessage());
 
-			throw new RuntimeException("Failed To save");
+			throw new RuntimeException(ExceptionMessageUtil.USER_DETAILS_FAILED_TO_SAVE);
 		}
 	}
 	
@@ -40,7 +41,7 @@ public class UserServiceImpl implements UserService {
 			return userDao.findByemailAndPassword(userLogInDto.getEmail(),userLogInDto.getPassword());
 			} catch (Exception e) {
 			log.error(e.getMessage());
-			throw new Exception("User not found");
+			throw new Exception(ExceptionMessageUtil.USER_NOT_FOUND_WHLE_SIGN_IN);
 		}
 		   
 		}
@@ -59,10 +60,10 @@ public class UserServiceImpl implements UserService {
 				return userDao.save(user);
 
 			}
-			throw new Exception("UserId failed to Get");
+			throw new Exception(ExceptionMessageUtil.USER_ID_FAILED_TO_GET_WHILE_UPDATE);
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			throw new Exception("Update Failed");
+			throw new Exception(ExceptionMessageUtil.USER_UPDATE_FAILED);
 
 		}
 
@@ -74,7 +75,7 @@ public class UserServiceImpl implements UserService {
 			return userDao.findByuserId(userId);
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			throw new Exception("User not found");
+			throw new Exception(ExceptionMessageUtil.USER_NOT_FOUND_BY_ID);
 		}
 	}
 
