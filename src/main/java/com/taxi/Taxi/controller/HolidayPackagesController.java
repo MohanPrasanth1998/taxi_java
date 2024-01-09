@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.taxi.Taxi.dto.HolidayPackageDto;
 import com.taxi.Taxi.model.HolidayPackage;
 import com.taxi.Taxi.service.HolidayPackageService;
+import com.taxi.Taxi.util.ExceptionMessageUtil;
 import com.taxi.Taxi.util.Response;
+import com.taxi.Taxi.util.ResponseMessageUtil;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -35,8 +37,8 @@ public class HolidayPackagesController {
 		log.info("Save Holiday Packages");
 		HolidayPackage holidayPackage = holidayPackageService.save(holidayPackageDto);
 		if (holidayPackage != null)
-			return new Response(new Date(), "SUCCESS", HttpStatus.OK);
-		return new Response(new Date(), "FAILED", HttpStatus.BAD_REQUEST);
+			return new Response(new Date(), ResponseMessageUtil.SUCCESS, HttpStatus.OK);
+		return new Response(new Date(), ResponseMessageUtil.FAILED, HttpStatus.BAD_REQUEST);
 
 	}
 
@@ -46,8 +48,8 @@ public class HolidayPackagesController {
 		log.info("Update Holiday Packages");
 		HolidayPackage holidayPackage = holidayPackageService.update(holidayPackageDto);
 		if (holidayPackage != null)
-			return new Response(new Date(), "SUCCESS", HttpStatus.OK);
-		return new Response(new Date(), "FAILED", HttpStatus.BAD_REQUEST);
+			return new Response(new Date(), ResponseMessageUtil.SUCCESS, HttpStatus.OK);
+		return new Response(new Date(), ResponseMessageUtil.FAILED, HttpStatus.BAD_REQUEST);
 
 	}
 
@@ -59,7 +61,7 @@ public class HolidayPackagesController {
 
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
-			throw new RuntimeException("Failed to get Packages");
+			throw new RuntimeException(ExceptionMessageUtil.HOLIDAY_PACKAGE_FAILED_TO_GET_ON_CONTROLLER);
 		}
 
 	}
@@ -69,8 +71,8 @@ public class HolidayPackagesController {
 		log.info("Delete package Details");
 		boolean isdelete = holidayPackageService.deletePackage(packageId);
 		if (isdelete)
-			return new Response(new Date(), "SUCCESS", HttpStatus.OK);
-		return new Response(new Date(), "FAILED", HttpStatus.BAD_REQUEST);
+			return new Response(new Date(), ResponseMessageUtil.SUCCESS, HttpStatus.OK);
+		return new Response(new Date(), ResponseMessageUtil.FAILED, HttpStatus.BAD_REQUEST);
 
 	}
 

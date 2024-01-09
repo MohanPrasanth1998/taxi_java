@@ -15,7 +15,10 @@ import com.taxi.Taxi.dto.UserDto;
 import com.taxi.Taxi.dto.UserLogInDto;
 import com.taxi.Taxi.model.User;
 import com.taxi.Taxi.service.UserService;
+import com.taxi.Taxi.util.ExceptionMessageUtil;
 import com.taxi.Taxi.util.Response;
+import com.taxi.Taxi.util.ResponseMessageUtil;
+
 import lombok.extern.slf4j.Slf4j;
 
 @RequestMapping("/user")
@@ -30,8 +33,8 @@ public class UserController {
 	public Response saveOrUpdate(@RequestBody UserDto userDto) {
 		User user = userService.saveOrUpdate(userDto);
 		if (user != null)
-			return new Response(new Date(), "SUCCESS", HttpStatus.OK);
-		return new Response(new Date(), "FAILED", HttpStatus.BAD_REQUEST);
+			return new Response(new Date(), ResponseMessageUtil.SUCCESS, HttpStatus.OK);
+		return new Response(new Date(), ResponseMessageUtil.FAILED, HttpStatus.BAD_REQUEST);
 
 	}
 	
@@ -39,8 +42,8 @@ public class UserController {
 	public Response saveSigIn(@RequestBody UserLogInDto userLogInDto ) throws Exception {
 		User user = userService.signIn(userLogInDto);
 		if (user != null)
-			return new Response(new Date(), "SUCCESS", HttpStatus.OK,user);
-		return new Response(new Date(), "FAILED", HttpStatus.BAD_REQUEST);
+			return new Response(new Date(), ResponseMessageUtil.SUCCESS, HttpStatus.OK,user);
+		return new Response(new Date(), ResponseMessageUtil.FAILED, HttpStatus.BAD_REQUEST);
 
 	}
 
@@ -50,8 +53,8 @@ public class UserController {
 
 		User user = userService.updateUser(userDto);
 		if (user != null)
-			return new Response(new Date(), "SUCCESS", HttpStatus.OK);
-		return new Response(new Date(), "FAILED", HttpStatus.BAD_REQUEST);
+			return new Response(new Date(), ResponseMessageUtil.SUCCESS, HttpStatus.OK);
+		return new Response(new Date(), ResponseMessageUtil.FAILED, HttpStatus.BAD_REQUEST);
 
 	}
 
@@ -62,7 +65,7 @@ public class UserController {
 			return userService.getUser(userId);
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			throw new RuntimeException("User Details Failed To Get");
+			throw new RuntimeException(ExceptionMessageUtil.USER_DETAILS_FAILED_TO_GET_ON_CONTROLLER);
 		}
 
 	}
@@ -72,8 +75,8 @@ public class UserController {
 		log.info("Delete User");
 		boolean isdelete = userService.deleteUser(userId);
 		if (isdelete)
-			return new Response(new Date(), "SUCCESS", HttpStatus.OK);
-		return new Response(new Date(), "FAILED", HttpStatus.BAD_REQUEST);
+			return new Response(new Date(), ResponseMessageUtil.SUCCESS, HttpStatus.OK);
+		return new Response(new Date(), ResponseMessageUtil.FAILED, HttpStatus.BAD_REQUEST);
 
 	}
 

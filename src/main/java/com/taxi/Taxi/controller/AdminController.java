@@ -15,6 +15,7 @@ import com.taxi.Taxi.dto.AdminDto;
 import com.taxi.Taxi.model.Admin;
 import com.taxi.Taxi.service.AdminService;
 import com.taxi.Taxi.util.Response;
+import com.taxi.Taxi.util.ResponseMessageUtil;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -31,8 +32,8 @@ public class AdminController {
 	public Response save(@Valid @RequestBody AdminDto adminDto) {
 		Admin admin = adminService.saveAdmin(adminDto);
 		if (admin != null)
-			return new Response(new Date(), "SUCCESS", HttpStatus.OK);
-		return new Response(new Date(), "FAILED", HttpStatus.BAD_REQUEST);
+			return new Response(new Date(), ResponseMessageUtil.SUCCESS, HttpStatus.OK);
+		return new Response(new Date(), ResponseMessageUtil.FAILED, HttpStatus.BAD_REQUEST);
 
 	}
 
@@ -42,8 +43,8 @@ public class AdminController {
 		Admin admin = adminService.updateAdmin(adminDto);
 
 		if (admin != null)
-			return new Response(new Date(), "SUCCESS", HttpStatus.OK);
-		return new Response(new Date(), "FAILED", HttpStatus.BAD_REQUEST);
+			return new Response(new Date(), ResponseMessageUtil.SUCCESS, HttpStatus.OK);
+		return new Response(new Date(), ResponseMessageUtil.FAILED, HttpStatus.BAD_REQUEST);
 
 	}
 
@@ -59,8 +60,8 @@ public class AdminController {
 		log.info("Delete Admin Details By Id");
 		boolean isdelete = adminService.deleteAdmin(adminId);
 		if (isdelete)
-			return new Response(new Date(), "SUCCESS", HttpStatus.OK);
-		return new Response(new Date(), "FAILED", HttpStatus.BAD_REQUEST);
+			return new Response(new Date(), ResponseMessageUtil.SUCCESS, HttpStatus.OK);
+		return new Response(new Date(), ResponseMessageUtil.FAILED, HttpStatus.BAD_REQUEST);
 
 	}
 

@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.taxi.Taxi.dto.TripBookingDto;
 import com.taxi.Taxi.model.TripBooking;
 import com.taxi.Taxi.service.TripBookingService;
+import com.taxi.Taxi.util.ExceptionMessageUtil;
 import com.taxi.Taxi.util.Response;
+import com.taxi.Taxi.util.ResponseMessageUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -32,8 +34,8 @@ public class TripBookingController {
 	public Response saveOrUpdate(@RequestBody TripBookingDto tripBookingDto) {
 		TripBooking booking = tripBookingService.saveOrUpdate(tripBookingDto);
 		if (booking != null)
-			return new Response(new Date(), "SUCCESS", HttpStatus.OK);
-		return new Response(new Date(), "FAILED", HttpStatus.BAD_REQUEST);
+			return new Response(new Date(), ResponseMessageUtil.SUCCESS, HttpStatus.OK);
+		return new Response(new Date(), ResponseMessageUtil.FAILED, HttpStatus.BAD_REQUEST);
 
 	}
 	
@@ -46,7 +48,7 @@ public class TripBookingController {
     		return tripBookingService.getAllTribsByCab(cabId);
 		} catch (Exception e) {
 		log.error(e.getMessage());
-		throw new RuntimeException("Cab List Failed To Get");
+		throw new RuntimeException(ExceptionMessageUtil.LIST_OF_BOOKING_CABS_FAILED_TO_GET_ON_CONTROLLER);
 		}
 	}
 	
@@ -60,7 +62,7 @@ public class TripBookingController {
 			
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			throw new RuntimeException(" List Failed To Get");
+			throw new RuntimeException(ExceptionMessageUtil.LIST_OF_BOOKING_LOCATION_FAILED_TO_GET_ON_CONTROLLER);
 			
 		}	
 	}
@@ -74,7 +76,7 @@ public class TripBookingController {
     		return tripBookingService.getAllTribsByCabAndUser(cabId, userId);
 		} catch (Exception e) {
 		log.error(e.getMessage());
-		throw new RuntimeException("Cab & User List Failed To Get");
+		throw new RuntimeException(ExceptionMessageUtil.LIST_OF_BOOKING_CABS_AND_USER_FAILED_TO_GET_ON_CONTROLLER);
 		}
 	}
 	

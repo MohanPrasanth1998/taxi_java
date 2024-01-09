@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.taxi.Taxi.dto.CabDto;
 import com.taxi.Taxi.model.Cab;
 import com.taxi.Taxi.service.CabService;
+import com.taxi.Taxi.util.ExceptionMessageUtil;
 import com.taxi.Taxi.util.Response;
+import com.taxi.Taxi.util.ResponseMessageUtil;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -34,8 +36,8 @@ public class CabController {
 		log.info("Save Cab Details");
 		Cab details = cabService.saveOrUpdate(cabDto);
 		if (details != null)
-			return new Response(new Date(), "SUCCESS", HttpStatus.OK);
-		return new Response(new Date(), "FAILED", HttpStatus.BAD_REQUEST);
+			return new Response(new Date(),ResponseMessageUtil.SUCCESS , HttpStatus.OK);
+		return new Response(new Date(), ResponseMessageUtil.FAILED, HttpStatus.BAD_REQUEST);
 
 	}
 
@@ -46,8 +48,8 @@ public class CabController {
 		Cab cab = cabService.updateCab(cabDto);
 
 		if (cab != null)
-			return new Response(new Date(), "SUCCESS", HttpStatus.OK);
-		return new Response(new Date(), "FAILED", HttpStatus.BAD_REQUEST);
+			return new Response(new Date(), ResponseMessageUtil.SUCCESS, HttpStatus.OK);
+		return new Response(new Date(), ResponseMessageUtil.FAILED, HttpStatus.BAD_REQUEST);
 
 	}
 
@@ -58,7 +60,7 @@ public class CabController {
 			return cabService.getCabById(cabId);
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			throw new RuntimeException("Cab Details Failed To Get");
+			throw new RuntimeException(ExceptionMessageUtil.CAB_DETAILS_FAILED_TO_GET_ON_CONTROLLER);
 		}
 
 	}
@@ -68,9 +70,9 @@ public class CabController {
 		log.info("Delete Cab Details");
 		boolean isdelete = cabService.deleteCab(cabId);
 		if (isdelete)
-			return new Response(new Date(), "SUCCESS", HttpStatus.OK);
+			return new Response(new Date(), ResponseMessageUtil.SUCCESS, HttpStatus.OK);
 
-		return new Response(new Date(), "FAILED", HttpStatus.BAD_REQUEST);
+		return new Response(new Date(), ResponseMessageUtil.FAILED, HttpStatus.BAD_REQUEST);
 
 	}
 

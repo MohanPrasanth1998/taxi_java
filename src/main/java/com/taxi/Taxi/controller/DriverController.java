@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.taxi.Taxi.dto.DriverDto;
 import com.taxi.Taxi.model.Driver;
 import com.taxi.Taxi.service.DriverService;
+import com.taxi.Taxi.util.ExceptionMessageUtil;
 import com.taxi.Taxi.util.Response;
+import com.taxi.Taxi.util.ResponseMessageUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -32,8 +34,8 @@ public class DriverController {
 	public Response saveOrUpdate(@RequestBody DriverDto driverDto) {
 		Driver driver = driverService.saveOrUpdate(driverDto);
 		if (driver != null)
-			return new Response(new Date(), "SUCCESS", HttpStatus.OK);
-		return new Response(new Date(), "FAILED", HttpStatus.BAD_REQUEST);
+			return new Response(new Date(), ResponseMessageUtil.SUCCESS, HttpStatus.OK);
+		return new Response(new Date(), ResponseMessageUtil.FAILED, HttpStatus.BAD_REQUEST);
 
 	}
 
@@ -42,8 +44,8 @@ public class DriverController {
 		log.info("Update Driver Details");
 		Driver driver = driverService.updateDriver(driverDto);
 		if (driver != null)
-			return new Response(new Date(), "SUCCESS", HttpStatus.OK);
-		return new Response(new Date(), "FAILED", HttpStatus.BAD_REQUEST);
+			return new Response(new Date(), ResponseMessageUtil.SUCCESS, HttpStatus.OK);
+		return new Response(new Date(), ResponseMessageUtil.FAILED, HttpStatus.BAD_REQUEST);
 
 	}
 
@@ -55,7 +57,7 @@ public class DriverController {
 			return driverService.getDriverById(driverId);
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			throw new RuntimeException("Driver Details Failed To Get");
+			throw new RuntimeException(ExceptionMessageUtil.DRIVER_DETAILS_FAILED_TO_GET_ON_CONTROLLER);
 		}
 
 	}
@@ -65,8 +67,8 @@ public class DriverController {
 		log.info("Delete Drivers Details");
 		boolean isdelete = driverService.deleteDriver(driverId);
 		if (isdelete)
-			return new Response(new Date(), "SUCCESS", HttpStatus.OK);
-		return new Response(new Date(), "FAILED", HttpStatus.BAD_REQUEST);
+			return new Response(new Date(), ResponseMessageUtil.SUCCESS, HttpStatus.OK);
+		return new Response(new Date(), ResponseMessageUtil.FAILED, HttpStatus.BAD_REQUEST);
 
 	}
 
