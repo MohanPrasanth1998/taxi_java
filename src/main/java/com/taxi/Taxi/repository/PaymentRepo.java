@@ -9,7 +9,7 @@ import com.taxi.Taxi.model.Cab;
 import com.taxi.Taxi.model.Payment;
 
 @Repository
-public interface PaymentRepo extends JpaRepository<Payment, Integer>{
+public interface PaymentRepo extends JpaRepository<Payment, String>{
 	
 	List<Payment> findBycab(Cab cab);
 

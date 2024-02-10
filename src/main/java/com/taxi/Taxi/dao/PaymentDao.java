@@ -18,14 +18,14 @@ import com.taxi.Taxi.repository.PaymentRepo;
 
 @Component
 public class PaymentDao implements PaymentRepo {
-	
+
 	@Autowired
 	private PaymentRepo paymentRepo;
 
 	@Override
 	public void flush() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -43,35 +43,35 @@ public class PaymentDao implements PaymentRepo {
 	@Override
 	public void deleteAllInBatch(Iterable<Payment> entities) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public void deleteAllByIdInBatch(Iterable<Integer> ids) {
+	public void deleteAllByIdInBatch(Iterable<String> ids) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteAllInBatch() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public Payment getOne(Integer id) {
+	public Payment getOne(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Payment getById(Integer id) {
+	public Payment getById(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Payment getReferenceById(Integer id) {
+	public Payment getReferenceById(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -101,25 +101,25 @@ public class PaymentDao implements PaymentRepo {
 	}
 
 	@Override
-	public List<Payment> findAllById(Iterable<Integer> ids) {
+	public List<Payment> findAllById(Iterable<String> ids) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public <S extends Payment> S save(S entity) {
-	
-		return paymentRepo.save(entity);
-	}
-
-	@Override
-	public Optional<Payment> findById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean existsById(Integer id) {
+	public Optional<Payment> findById(String id) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+
+	@Override
+	public boolean existsById(String id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -131,33 +131,33 @@ public class PaymentDao implements PaymentRepo {
 	}
 
 	@Override
-	public void deleteById(Integer id) {
+	public void deleteById(String id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void delete(Payment entity) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public void deleteAllById(Iterable<? extends Integer> ids) {
+	public void deleteAllById(Iterable<? extends String> ids) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteAll(Iterable<? extends Payment> entities) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteAll() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -175,7 +175,7 @@ public class PaymentDao implements PaymentRepo {
 	@Override
 	public <S extends Payment> Optional<S> findOne(Example<S> example) {
 		// TODO Auto-generated method stub
-		return null;
+		return Optional.empty();
 	}
 
 	@Override
@@ -204,8 +204,8 @@ public class PaymentDao implements PaymentRepo {
 
 	@Override
 	public List<Payment> findBycab(Cab cab) {
-		
-		return paymentRepo.findBycab(cab);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

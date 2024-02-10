@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.taxi.Taxi.dao.TripBookingDao;
 import com.taxi.Taxi.dto.TripBookingDto;
+import com.taxi.Taxi.dto.TripSearchDto;
 import com.taxi.Taxi.model.Cab;
 import com.taxi.Taxi.model.TripBooking;
 import com.taxi.Taxi.model.User;
@@ -109,18 +110,16 @@ public class TripBookingServiceImpl implements TripBookingService {
 	}
 
 	@Override
-	public List<TripBooking> getAllTripsBypickupLocationAnddropLocationAndfromDateTime(String pickupLocation,
-			String dropLocation, String fromDateTime) {
+	public List<TripBooking> getAllTripsBypickupLocationAnddropLocationAndfromDateTime(TripSearchDto tripSearchDto) {
 		try {
 			log.info("list Of Details");
-			return tripBookingDao.findBypickupLocationAndDropLocationAndFromDateTime(pickupLocation, dropLocation,
-					fromDateTime);
+			return tripBookingDao.findBypickupLocationAndDropLocationAndFromDateTime(tripSearchDto.getPickupLocation(),
+					tripSearchDto.getDropLocation(), tripSearchDto.getFromDateTime());
 		} catch (Exception e) {
 			log.error(e.getMessage());
 			return new ArrayList<>();
 		}
 
-		
 	}
 
 }

@@ -3,6 +3,7 @@ package com.taxi.Taxi.service;
 import java.util.List;
 
 import com.taxi.Taxi.dto.TripBookingDto;
+import com.taxi.Taxi.dto.TripSearchDto;
 import com.taxi.Taxi.model.TripBooking;
 
 public interface TripBookingService {
@@ -20,7 +21,6 @@ public interface TripBookingService {
 
 	TripBooking updateStatus(boolean bookingStatus, Integer tripBookingId) throws Exception;
 
-	List<TripBooking> getAllTripsBypickupLocationAnddropLocationAndfromDateTime(String pickupLocation,
-			String dropLocation, String fromDateTime);
+	List<TripBooking> getAllTripsBypickupLocationAnddropLocationAndfromDateTime(TripSearchDto tripSearchDto);
 
 }

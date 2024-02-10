@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.taxi.Taxi.dto.TripBookingDto;
+import com.taxi.Taxi.dto.TripSearchDto;
 import com.taxi.Taxi.model.TripBooking;
 import com.taxi.Taxi.service.TripBookingService;
 import com.taxi.Taxi.util.ExceptionMessageUtil;
@@ -53,12 +54,12 @@ public class TripBookingController {
 	}
 	
 	
-	@GetMapping("/get/{pickupLocation}/{dropLocation}/{fromDateTime}")
-	public List<TripBooking> getAllTripsBypickupLocationAnddropLocationAndfromDateTime(@PathVariable String  pickupLocation,
-			@PathVariable String dropLocation, @PathVariable String fromDateTime ){
+	@PostMapping("/search")
+	public List<TripBooking> getAllTripsBypickupLocationAnddropLocationAndfromDateTime(
+			@RequestBody TripSearchDto tripSearchDto){
 		log.debug("List of Trips");
 		try {
-			return tripBookingService.getAllTripsBypickupLocationAnddropLocationAndfromDateTime(pickupLocation, dropLocation, fromDateTime);
+			return tripBookingService.getAllTripsBypickupLocationAnddropLocationAndfromDateTime(tripSearchDto);
 			
 		} catch (Exception e) {
 			log.error(e.getMessage());

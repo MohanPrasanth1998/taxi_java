@@ -54,7 +54,6 @@ public class TripBooking {
 	
 	@ManyToOne(targetEntity = Cab.class, cascade = CascadeType.REMOVE)
 	@JoinColumn(name="cab_id",referencedColumnName = "cabId")
-	@JsonIgnore
 	private Cab cab;
 
 	
